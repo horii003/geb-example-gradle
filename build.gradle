@@ -12,6 +12,7 @@ ext {
         phantomJsVersion = '1.9.7'
     }
 }
+
 buildscript {
   repositories {
     mavenCentral()
@@ -43,7 +44,6 @@ ext {
 }
 
 dependencies {
-
   sauceConnect("com.saucelabs:ci-sauce:1.84") {
     exclude module: 'sebuilder-interpreter'
   }
