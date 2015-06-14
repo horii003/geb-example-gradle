@@ -108,11 +108,11 @@ drivers.each { driver ->
     }
 }
 
-task functionalTests {
-  group "Sauce Test"
-  dependsOn 'openSauceTunnelInBackground'
-  finalizedBy 'closeSauceTunnel'
-}
+//task functionalTests {
+//  group "Sauce Test"
+//  dependsOn 'openSauceTunnelInBackground'
+//  finalizedBy 'closeSauceTunnel'
+//}
 
 chromeTest {
     dependsOn unzipChromeDriver
