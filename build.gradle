@@ -35,6 +35,13 @@ apply plugin: 'eclipse'
 //    jcenter()
 //}
 
+def gebVersion = "0.10.0"
+def seleniumVersion = "2.42.2"
+
+ext {
+  hostname = 'ip-10-0-0-182'
+}
+
 dependencies {
 
   sauceConnect("com.saucelabs:ci-sauce:1.84") {
@@ -42,6 +49,17 @@ dependencies {
   }
   // This is marked as provided in the pom for some reason
   sauceConnect "commons-io:commons-io:1.4"
+
+//    compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+//    testCompile group: 'junit', name: 'junit', version: '4.+'
+
+	testCompile "org.gebish:geb-spock:0.10.0"
+	testCompile "org.codehaus.groovy:groovy-all:2.3.7"
+	testCompile "org.spockframework:spock-core:0.7-groovy-2.0"
+
+	testCompile "org.seleniumhq.selenium:selenium-chrome-driver:2.37.1"
+	testRuntime "org.seleniumhq.selenium:selenium-support:2.37.1"
+
   
     // If using Spock, need to depend on geb-spock
     testCompile "org.gebish:geb-spock:$gebVersion"
@@ -60,6 +78,8 @@ dependencies {
         // phantomjs driver pulls in a different selenium version
         transitive = false
     }
+
+	
 }
 
 sauceLabs {
