@@ -13,6 +13,11 @@ ext {
     }
 }
 
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
 apply plugin: "groovy"
 apply from: "gradle/idea.gradle"
 apply from: "gradle/ci.gradle"
@@ -21,11 +26,6 @@ apply plugin: "project-report"
 apply plugin: "geb-saucelabs"
 apply plugin: 'java'
 apply plugin: 'eclipse'
-
-repositories {
-    jcenter()
-    mavenCentral()
-}
 
 dependencies {
     classpath 'org.gebish:geb-gradle:0.10.0'
