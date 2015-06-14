@@ -109,11 +109,17 @@ drivers.each { driver ->
     }
 }
 
+task functionalTests {
+  group "Sauce Test"
+  dependsOn 'openSauceTunnelInBackground'
+  finalizedBy 'closeSauceTunnel'
+}
+
 chromeTest {
     dependsOn unzipChromeDriver
 
-    def chromedriverFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "chromedriver.exe" : "chromedriver"
-    systemProperty "webdriver.chrome.driver", new File(unzipChromeDriver.outputs.files.singleFile, chromedriverFilename).absolutePath
+//    def chromedriverFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "chromedriver.exe" : "chromedriver"
+//    systemProperty "webdriver.chrome.driver", new File(unzipChromeDriver.outputs.files.singleFile, chromedriverFilename).absolutePath
 
   dependsOn 'openSauceTunnelInBackground'
   finalizedBy 'closeSauceTunnel'
