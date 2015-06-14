@@ -115,10 +115,10 @@ task functionalTests {
 }
 
 chromeTest {
-//    dependsOn unzipChromeDriver
+    dependsOn unzipChromeDriver
 
-//    def chromedriverFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "chromedriver.exe" : "chromedriver"
-//    systemProperty "webdriver.chrome.driver", new File(unzipChromeDriver.outputs.files.singleFile, chromedriverFilename).absolutePath
+    def chromedriverFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "chromedriver.exe" : "chromedriver"
+    systemProperty "webdriver.chrome.driver", new File(unzipChromeDriver.outputs.files.singleFile, chromedriverFilename).absolutePath
 
   dependsOn 'openSauceTunnelInBackground'
   finalizedBy 'closeSauceTunnel'
@@ -132,6 +132,7 @@ phantomJsTest {
 }
 
 test {
-    dependsOn drivers.collect { tasks["${it}Test"] }
+//    dependsOn drivers.collect { tasks["${it}Test"] }
+    dependsOn drivers.collect { tasks["chromeTest"] }
     enabled = false
 }
