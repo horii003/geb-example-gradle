@@ -24,10 +24,13 @@ apply plugin: 'eclipse'
 
 repositories {
     jcenter()
+    mavenCentral()
 }
 
 dependencies {
-
+    classpath 'org.gebish:geb-gradle:0.10.0'
+    classpath 'org.grails:grails-gradle-plugin:2.1.1'
+    
   sauceConnect("com.saucelabs:ci-sauce:1.84") {
     exclude module: 'sebuilder-interpreter'
   }
