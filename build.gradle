@@ -22,10 +22,10 @@ buildscript {
   }
 }
 
-//apply plugin: "groovy"
-//apply from: "gradle/idea.gradle"
-//apply from: "gradle/ci.gradle"
-//apply from: "gradle/osSpecificDownloads.gradle"
+apply plugin: "groovy"
+apply from: "gradle/idea.gradle"
+apply from: "gradle/ci.gradle"
+apply from: "gradle/osSpecificDownloads.gradle"
 apply plugin: "project-report"
 apply plugin: "geb-saucelabs"
 apply plugin: 'java'
@@ -116,7 +116,7 @@ task functionalTests {
 }
 
 chromeTest {
-    dependsOn unzipChromeDriver
+//    dependsOn unzipChromeDriver
 
 //    def chromedriverFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "chromedriver.exe" : "chromedriver"
 //    systemProperty "webdriver.chrome.driver", new File(unzipChromeDriver.outputs.files.singleFile, chromedriverFilename).absolutePath
