@@ -31,9 +31,9 @@ apply plugin: "geb-saucelabs"
 apply plugin: 'java'
 apply plugin: 'eclipse'
 
-repositories {
-    jcenter()
-}
+//repositories {
+//    jcenter()
+//}
 
 dependencies {
 
