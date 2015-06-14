@@ -1,4 +1,4 @@
-import org.apache.tools.ant.taskdefs.condition.Os
+//import org.apache.tools.ant.taskdefs.condition.Os
 
 ext {
     // The drivers we want to use
@@ -60,7 +60,6 @@ dependencies {
 	testCompile "org.seleniumhq.selenium:selenium-chrome-driver:2.37.1"
 	testRuntime "org.seleniumhq.selenium:selenium-support:2.37.1"
 
-  
     // If using Spock, need to depend on geb-spock
 //    testCompile "org.gebish:geb-spock:$gebVersion"
 //    testCompile("org.spockframework:spock-core:1.0-groovy-2.4") {
@@ -133,7 +132,6 @@ phantomJsTest {
 }
 
 test {
-
     dependsOn drivers.collect { tasks["${it}Test"] }
     enabled = false
 }
