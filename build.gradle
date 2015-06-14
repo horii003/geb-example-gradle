@@ -17,12 +17,23 @@ apply plugin: "groovy"
 apply from: "gradle/idea.gradle"
 apply from: "gradle/ci.gradle"
 apply from: "gradle/osSpecificDownloads.gradle"
+apply plugin: "project-report"
+apply plugin: "geb-saucelabs"
+apply plugin: 'java'
+apply plugin: 'eclipse'
 
 repositories {
     jcenter()
 }
 
 dependencies {
+
+  sauceConnect("com.saucelabs:ci-sauce:1.84") {
+    exclude module: 'sebuilder-interpreter'
+  }
+  // This is marked as provided in the pom for some reason
+  sauceConnect "commons-io:commons-io:1.4"
+  
     // If using Spock, need to depend on geb-spock
     testCompile "org.gebish:geb-spock:$gebVersion"
     testCompile("org.spockframework:spock-core:1.0-groovy-2.4") {
@@ -40,6 +51,17 @@ dependencies {
         // phantomjs driver pulls in a different selenium version
         transitive = false
     }
+}
+
+sauceLabs {
+  account {
+   username = "horii03"
+   accessKey = "1dff5a82-1c94-4bec-bbe9-f37b0cb3ffa8"
+  }
+  connect {
+    port = 4445
+    additionalOptions << '-t' << 'ip-10-0-0-182'
+  }
 }
 
 drivers.each { driver ->
@@ -64,6 +86,9 @@ chromeTest {
 
     def chromedriverFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "chromedriver.exe" : "chromedriver"
     systemProperty "webdriver.chrome.driver", new File(unzipChromeDriver.outputs.files.singleFile, chromedriverFilename).absolutePath
+
+  dependsOn 'openSauceTunnelInBackground'
+  finalizedBy 'closeSauceTunnel'
 }
 
 phantomJsTest {
@@ -74,6 +99,7 @@ phantomJsTest {
 }
 
 test {
+
     dependsOn drivers.collect { tasks["${it}Test"] }
     enabled = false
 }
