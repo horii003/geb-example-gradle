@@ -26,7 +26,8 @@ buildscript { //2
     }
     dependencies {
        classpath 'org.gebish:geb-gradle:0.10.0'
-       compile 'org.codehaus.groovy:groovy-all:2.3.10'
+       //compile 'org.codehaus.groovy:groovy-all:2.3.10'
+       compile localGroovy()
     }
 }
 
