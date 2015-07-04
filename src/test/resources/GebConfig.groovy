@@ -22,6 +22,7 @@ if (browserStackBrowser) {
        def accessKey = "vUSTRxfRvv8z9dt7gqmE"
        assert accessKey
        new BrowserStackDriverFactory().create(browserStackBrowser, username, accessKey)
+       //new BrowserStackDriverFactory().create(browserStackBrowser, username, accessKey)
     }
 }
 
