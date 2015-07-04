@@ -96,3 +96,7 @@ browserStack {
        accessKey = "vUSTRxfRvv8z9dt7gqmE"
     }
 }
+
+task browserStackTests {
+    dependsOn 'firefox_win8_32'
+}
