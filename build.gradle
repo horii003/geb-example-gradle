@@ -18,7 +18,7 @@ apply from: "gradle/idea.gradle"
 apply from: "gradle/ci.gradle"
 apply from: "gradle/osSpecificDownloads.gradle"
 apply plugin: "geb-browserstack"
-apply plugin:'java'
+//apply plugin:'java'
 
 buildscript { //2
     repositories {
@@ -27,7 +27,8 @@ buildscript { //2
     }
     dependencies {
        classpath 'org.gebish:geb-gradle:0.10.0'
-       compile 'org.codehaus.groovy:groovy-all:2.4.1'
+       compile 'org.codehaus.groovy:groovy-all:2.3.10'
+       //compile 'org.codehaus.groovy:groovy-all:2.4.1'
        //compile localGroovy()
        //testCompile "org.codehaus.groovy:groovy:2.3.10"
     }
