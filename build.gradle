@@ -31,10 +31,6 @@ buildscript { //2
 //    def groovyClasspath = groovyRuntime.inferGroovyClasspath(configurations.compile)
 }
 
-//dependencies {
-//  groovy localGroovy()
-//}
-
 browserStack {
     application 'http://localhost:8080' //3
     browsers { //4
@@ -54,4 +50,31 @@ browserStack {
        username = "osahorii1"
        accessKey = "vUSTRxfRvv8z9dt7gqmE"
     }
+}
+
+configurations {
+    testCompile.transitive = true
+}
+
+dependencies {
+    groovy "org.codehaus.groovy:groovy-all:2.3.6"
+ 
+    def gebVersion = "0.10.0"
+    def seleniumVersion = "2.43.1"
+ 
+    // If using Spock, need to depend on geb-spock
+    testCompile "org.gebish:geb-spock:0.10.0"
+    testCompile "org.spockframework:spock-core:0.7-groovy-1.8"
+ 
+    // If using JUnit, need to depend on geb-junit (3 or 4)
+    testCompile "org.gebish:geb-junit4:0.10.0"
+    testCompile "junit:junit-dep:4.8.2"
+ 
+    // Need a driver implementation
+    testCompile "org.seleniumhq.selenium:selenium-firefox-driver:2.43.1"
+    testRuntime "org.seleniumhq.selenium:selenium-support:2.43.1"
+}
+ 
+test {
+    systemProperties "geb.build.reportsDir": "$reportsDir/geb"
 }
