@@ -18,6 +18,7 @@ apply from: "gradle/idea.gradle"
 apply from: "gradle/ci.gradle"
 apply from: "gradle/osSpecificDownloads.gradle"
 apply plugin: "geb-browserstack"
+apply plugin:'java'
 
 buildscript { //2
     repositories {
