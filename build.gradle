@@ -29,9 +29,9 @@ buildscript { //2
     }
 }
 
-dependencies {
-  groovy localGroovy()
-}
+//dependencies {
+//  groovy localGroovy()
+//}
 
 browserStack {
     application 'http://localhost:8080' //3
