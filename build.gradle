@@ -26,7 +26,10 @@ buildscript { //2
     }
     dependencies {
        classpath 'org.gebish:geb-gradle:0.10.0'
+    }
+}
 
+dependencies {
     // If using Spock, need to depend on geb-spock
     testCompile "org.gebish:geb-spock:$gebVersion"
     testCompile("org.spockframework:spock-core:1.0-groovy-2.4") {
@@ -43,7 +46,6 @@ buildscript { //2
     testCompile("com.github.detro.ghostdriver:phantomjsdriver:1.1.0") {
         // phantomjs driver pulls in a different selenium version
         transitive = false
-    }
     }
 }
 
