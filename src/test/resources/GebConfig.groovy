@@ -13,6 +13,7 @@ waiting {
 	timeout = 2
 }
 
+environments {
 //def browserStackBrowser = "firefox_Win8_32"
 def browserStackBrowser = System.getProperty("geb.browserstack.browser")
 if (browserStackBrowser) {
@@ -26,7 +27,7 @@ if (browserStackBrowser) {
     }
 }
 
-//environments {
+
 	// run via “./gradlew chromeTest”
 	// See: http://code.google.com/p/selenium/wiki/ChromeDriver
 //	chrome {
@@ -40,7 +41,7 @@ if (browserStackBrowser) {
 //    phantomJs {
 //        driver = { new PhantomJSDriver() }
 //    }
-//}
+}
 
 // To run the tests with all browsers just run “./gradlew test”
 
