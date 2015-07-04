@@ -13,7 +13,7 @@ waiting {
 	timeout = 2
 }
 
-def browserStackBrowser = System.getProperty("geb.browserstack.browser")
+def browserStackBrowser = "internet explorer_windows_9"
 if (browserStackBrowser) {
     driver = {
        def username = "osahorii1"
