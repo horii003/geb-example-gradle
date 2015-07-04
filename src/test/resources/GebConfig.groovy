@@ -13,7 +13,7 @@ waiting {
 	timeout = 2
 }
 
-def browserStackBrowser = System.getProperty("geb.browserstack.browser")
+def browserStackBrowser = "firefox_Mac_19Test"
 if (browserStackBrowser) {
     driver = {
        def username = "osahorii1"
