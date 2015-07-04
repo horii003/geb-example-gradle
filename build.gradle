@@ -22,10 +22,11 @@ apply plugin: "geb-browserstack"
 buildscript { //2
     repositories {
        mavenCentral()
-       jcenter()
+//       jcenter()
     }
     dependencies {
        classpath 'org.gebish:geb-gradle:0.10.0'
+       compile 'org.codehaus.groovy:groovy-all:2.3.10'
     }
 }
 
