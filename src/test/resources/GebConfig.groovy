@@ -13,7 +13,7 @@ waiting {
 	timeout = 2
 }
 
-def browserStackBrowser = "firefox_mac_32"
+def browserStackBrowser = "firefox_win8_32"
 if (browserStackBrowser) {
     driver = {
        def username = "osahorii1"
