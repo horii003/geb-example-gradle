@@ -13,7 +13,7 @@ waiting {
 	timeout = 2
 }
 
-def browserStackBrowser = "firefox_Mac_19Test"
+def browserStackBrowser = "firefox_Mac_19"
 if (browserStackBrowser) {
     driver = {
        def username = "osahorii1"
