@@ -13,7 +13,8 @@ waiting {
 	timeout = 2
 }
 
-def browserStackBrowser = "firefox_Win8_32"
+//def browserStackBrowser = "firefox_Win8_32"
+def browserStackBrowser = System.getProperty("geb.browserstack.browser")
 if (browserStackBrowser) {
     driver = {
        def username = "osahorii1"
