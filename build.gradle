@@ -75,7 +75,7 @@ buildscript { //2
 browserStack {
     application 'http://localhost:8080' //3
     browsers { //4
-       firefox_mac_32
+       firefox_win8_32
        chrome_mac
        delegate."internet explorer_windows_9"
        nexus4 { //5
