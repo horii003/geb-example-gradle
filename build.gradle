@@ -77,7 +77,11 @@ browserStack {
     browsers { //4
        firefox_win8_32
        chrome_mac
-       delegate."internet explorer_windows_9"
+        delegate."internet explorer_windows_8"
+        delegate."internet explorer_windows_9"
+        delegate."internet explorer_windows_10"
+        delegate."internet explorer_windows_11"
+        
        nexus4 { //5
          capabilities browserName: "android", platform: "ANDROID", device: "Google Nexus 4"
        }
@@ -91,4 +95,8 @@ browserStack {
        username = "osahorii1"
        accessKey = "vUSTRxfRvv8z9dt7gqmE"
     }
+}
+
+task ieBrowserStackTests {
+    dependsOn 'internet explorerWindows8Test', 'internet explorerWindows9Test', 'internet explorerWindows10Test', 'internet explorerWindows11Test'
 }
