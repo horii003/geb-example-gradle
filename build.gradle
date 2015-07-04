@@ -30,7 +30,6 @@ buildscript { //2
        //compile 'org.codehaus.groovy:groovy-all:2.3.10'
        //compile 'org.codehaus.groovy:groovy-all:2.4.1'
 
-       compile 'javax.activation:activation:1.1.1'
        compile gradleApi()
        compile localGroovy()
        //testCompile "org.codehaus.groovy:groovy:2.3.10"
