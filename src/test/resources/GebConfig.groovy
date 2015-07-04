@@ -13,6 +13,17 @@ waiting {
 	timeout = 2
 }
 
+def browserStackBrowser = System.getProperty("geb.browserstack.browser")
+if (browserStackBrowser) {
+    driver = {
+       def username = "osahorii1"
+       assert username
+       def accessKey = "vUSTRxfRvv8z9dt7gqmE"
+       assert accessKey
+       new BrowserStackDriverFactory().create(browserStackBrowser, username, accessKey)
+    }
+}
+
 environments {
 	
 	// run via “./gradlew chromeTest”
