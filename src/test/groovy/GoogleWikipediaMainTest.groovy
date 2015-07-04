@@ -1,7 +1,7 @@
 import geb.spock.GebReportingSpec
-import me.pdouble.page.GoogleHomePage
-import me.pdouble.page.GoogleResultsPage
-import me.pdouble.page.WikipediaPage
+import GoogleHomePage
+import GoogleResultsPage
+import WikipediaPage
 
 class GoogleWikipediaMainTest extends GebReportingSpec  {
 
