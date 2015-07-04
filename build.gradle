@@ -19,10 +19,10 @@ apply from: "gradle/ci.gradle"
 apply from: "gradle/osSpecificDownloads.gradle"
 apply plugin: "geb-browserstack"
 
-//buildscript { //2
+buildscript { //2
     repositories {
        mavenCentral()
-//       jcenter()
+       jcenter()
     }
     dependencies {
        classpath 'org.gebish:geb-gradle:0.10.0'
@@ -31,7 +31,7 @@ apply plugin: "geb-browserstack"
        compile localGroovy()
        //testCompile "org.codehaus.groovy:groovy:2.3.10"
     }
-//}
+}
 
 browserStack {
     application 'http://localhost:8080' //3
