@@ -13,82 +13,33 @@ ext {
     }
 }
 
-buildscript {
-  repositories {
-    mavenCentral()
-  }
-  dependencies {
-    classpath 'org.gebish:geb-gradle:0.10.0'
-    classpath 'org.grails:grails-gradle-plugin:2.1.1'
-  }
-}
-
 apply plugin: "groovy"
 apply from: "gradle/idea.gradle"
 apply from: "gradle/ci.gradle"
 apply from: "gradle/osSpecificDownloads.gradle"
-apply plugin: "project-report"
-apply plugin: "geb-saucelabs"
-apply plugin: 'java'
-apply plugin: 'eclipse'
 
-//repositories {
-//    jcenter()
-//}
-
-def gebVersion = "0.10.0"
-def seleniumVersion = "2.42.2"
-
-ext {
-  hostname = 'ip-10-0-0-182'
+repositories {
+    jcenter()
 }
 
 dependencies {
-  sauceConnect("com.saucelabs:ci-sauce:1.84") {
-    exclude module: 'sebuilder-interpreter'
-  }
-  // This is marked as provided in the pom for some reason
-  sauceConnect "commons-io:commons-io:1.4"
-
-//    compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
-//    testCompile group: 'junit', name: 'junit', version: '4.+'
-
-	testCompile "org.gebish:geb-spock:0.10.0"
-	testCompile "org.codehaus.groovy:groovy-all:2.3.7"
-	testCompile "org.spockframework:spock-core:0.7-groovy-2.0"
-
-	testCompile "org.seleniumhq.selenium:selenium-chrome-driver:2.37.1"
-	testRuntime "org.seleniumhq.selenium:selenium-support:2.37.1"
-
     // If using Spock, need to depend on geb-spock
-//    testCompile "org.gebish:geb-spock:$gebVersion"
-//    testCompile("org.spockframework:spock-core:1.0-groovy-2.4") {
-//        exclude group: "org.codehaus.groovy"
-//    }
-//    testCompile "org.codehaus.groovy:groovy-all:$groovyVersion"
+    testCompile "org.gebish:geb-spock:$gebVersion"
+    testCompile("org.spockframework:spock-core:1.0-groovy-2.4") {
+        exclude group: "org.codehaus.groovy"
+    }
+    testCompile "org.codehaus.groovy:groovy-all:$groovyVersion"
 
     // If using JUnit, need to depend on geb-junit (3 or 4)
     testCompile "org.gebish:geb-junit4:$gebVersion"
 
     // Drivers
-//    testCompile "org.seleniumhq.selenium:selenium-chrome-driver:$seleniumVersion"
-//    testCompile "org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion"
-//    testCompile("com.github.detro.ghostdriver:phantomjsdriver:1.1.0") {
+    testCompile "org.seleniumhq.selenium:selenium-chrome-driver:$seleniumVersion"
+    testCompile "org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion"
+    testCompile("com.github.detro.ghostdriver:phantomjsdriver:1.1.0") {
         // phantomjs driver pulls in a different selenium version
-//        transitive = false
-//    }
-
-}
-
-sauceLabs {
-  account {
-   username = "horii03"
-   accessKey = "1dff5a82-1c94-4bec-bbe9-f37b0cb3ffa8"
-  }
-  connect {
-    port = 4445
-    additionalOptions << '-t' << 'ip-10-0-0-182'
-  }
+        transitive = false
+    }
 }
 
 drivers.each { driver ->
@@ -108,19 +59,11 @@ drivers.each { driver ->
     }
 }
 
-//task functionalTests {
-//  group "Sauce Test"
-//  dependsOn 'openSauceTunnelInBackground'
-//  finalizedBy 'closeSauceTunnel'
-//}
-
 chromeTest {
     dependsOn unzipChromeDriver
+
     def chromedriverFilename = Os.isFamily(Os.FAMILY_WINDOWS) ? "chromedriver.exe" : "chromedriver"
     systemProperty "webdriver.chrome.driver", new File(unzipChromeDriver.outputs.files.singleFile, chromedriverFilename).absolutePath
-
-  dependsOn 'openSauceTunnelInBackground'
-  finalizedBy 'closeSauceTunnel'
 }
 
 phantomJsTest {
@@ -131,7 +74,6 @@ phantomJsTest {
 }
 
 test {
-//    dependsOn drivers.collect { tasks["${it}Test"] }
-    dependsOn drivers.collect { tasks["chromeTest"] }
+    dependsOn drivers.collect { tasks["${it}Test"] }
     enabled = false
 }
