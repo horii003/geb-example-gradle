@@ -6,16 +6,16 @@ import geb.Browser
 
 class GoogleWikipediaMainTest extends GebReportingSpec  {
 
-def setupSpec() {
-    println "Inside setupSpec()..."
-    browser.config.autoClearCookies = true
-}
+//def setupSpec() {
+//    println "Inside setupSpec()..."
+//    browser.config.autoClearCookies = true
+//}
 
-def cleanupSpec() {
-    println "Inside cleanupSpec()..."
-    println "Quitting browser..."
-    browser.quit()
-}
+//def cleanupSpec() {
+//    println "Inside cleanupSpec()..."
+//    println "Quitting browser..."
+//    browser.quit()
+//}
 
 	def "first result for wikipedia search should be wikipedia"() {
 		given:
