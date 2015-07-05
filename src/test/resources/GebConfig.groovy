@@ -21,10 +21,10 @@ def browserstackDriver = { def browserCaps ->
     def caps = [:]
     caps << browserCaps
     caps.put('os', 'Windows')
-    caps.put('os_version', '7')
-    caps.put('browser', 'IE')
-    caps.put('browser_version', '8.0')
-    caps.put('name', 'BrowserStack TEST')
+    caps.put('os_version', '8')
+    caps.put('browser', 'firefox')
+    caps.put('browser_version', '32')
+    caps.put('name', 'BrowserStack firefox32 Windows8 TEST')
     driver = {
        new BrowserStackDriverFactory().create('firefox_Win8_32', username, accessKey, '', caps)
     }
