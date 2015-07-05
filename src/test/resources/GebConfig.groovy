@@ -26,9 +26,10 @@ def browserstackDriver = { def browserCaps ->
     caps.put('browser_version', '8.0')
     caps.put('name', 'BrowserStack TEST')
     driver = {
-       new BrowserStackDriverFactory().create(username, accessKey, caps)
+       new BrowserStackDriverFactory().create('firefox_Win8_32', username, accessKey, '', caps)
     }
 }
+//WebDriver create(String specification, String username, String password, String localId, Map<String, Object> capabilities = [:])
 
 //def browserStackBrowser = "firefox_Win8_32"
 def browserStackBrowser = System.getProperty("geb.browserstack.browser")
