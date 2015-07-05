@@ -24,6 +24,7 @@ def browserstackDriver = { def browserCaps ->
     caps.put('os_version', '7')
     caps.put('browser', 'IE')
     caps.put('browser_version', '8.0')
+    caps.put('name', 'BrowserStack TEST')
     driver = {
        new BrowserStackDriverFactory().create(username, accessKey, caps)
     }
