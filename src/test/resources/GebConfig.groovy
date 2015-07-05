@@ -13,19 +13,29 @@ waiting {
 	timeout = 2
 }
 
+def browserstackDriver = { def browserCaps ->
+    def username = "osahorii1"
+    assert username
+    def accessKey =  "vUSTRxfRvv8z9dt7gqmE"
+    assert accessKey
+    def caps = [:]
+    caps << browserCaps
+    caps.put('os', 'Windows')
+    caps.put('os_version', '7')
+    caps.put('browser', 'IE')
+    caps.put('browser_version', '8.0')
+    driver = {
+       new BrowserStackDriverFactory().create(username, accessKey, caps)
+    }
+}
 
 //def browserStackBrowser = "firefox_Win8_32"
 def browserStackBrowser = System.getProperty("geb.browserstack.browser")
 if (browserStackBrowser) {
-    driver = {
-       def username = "osahorii1"
-       assert username
-       def accessKey = "vUSTRxfRvv8z9dt7gqmE"
-       assert accessKey
-       new BrowserStackDriverFactory().create(browserStackBrowser, username, accessKey)
-       //new BrowserStackDriverFactory().create(browserStackBrowser, username, accessKey)
-    }
-}
+  def browserCaps = new Properties()
+  browserCaps.load(new StringReader(browserStackBrowser.replaceAll(',','\n')))
+  browserstackDriver(browserCaps)
+}  
 
 //environments {
 	// run via “./gradlew chromeTest”
